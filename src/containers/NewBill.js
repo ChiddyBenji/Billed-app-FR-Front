@@ -25,6 +25,7 @@ export default class NewBill {
     // === Modification : Validation de l'extension du fichier ===
     const allowedExtensions = ['jpg', 'jpeg', 'png']
     const fileExtension = fileName.split('.').pop().toLowerCase()
+    // On verifie si l'extension du fichier est incluse dans la liste des extensions autorisées
     if (!allowedExtensions.includes(fileExtension)) {
       alert("Veuillez télécharger un fichier avec une extension jpg, jpeg ou png.")
       return // Si l'extension n'est pas valide, on arrête l'exécution

@@ -81,16 +81,35 @@ export default class {
 
   // === Modification
 
-  handleClickIconEye = () => {
-    const billUrl = $('#icon-eye-d').attr("data-bill-url")
-    const imgWidth = Math.floor($('#modaleFileAdmin1').width() * 0.8)
-    if (billUrl) {
-      $('#modaleFileAdmin1').find(".modal-body").html(`<div style='text-align: center;'><img width=${imgWidth} src=${billUrl} alt="Bill"/></div>`)
-    } else {
-      $('#modaleFileAdmin1').find(".modal-body").html('<p> Aucune image disponible. </p>')
-    }
-    if (typeof $('#modaleFileAdmin1').modal === 'function') $('#modaleFileAdmin1').modal('show')
+  // Fonction qui gère le clic sur l'icône en forme d'œil
+handleClickIconEye = () => {
+  // Récupération de l'URL de la facture à partir de l'attribut "data-bill-url" de l'élément avec l'id "icon-eye-d"
+  const billUrl = $('#icon-eye-d').attr("data-bill-url");
+
+  // Calcul de la largeur de l'image à afficher (80% de la largeur de la modale)
+  const imgWidth = Math.floor($('#modaleFileAdmin1').width() * 0.8);
+
+  // Si une URL de facture est disponible
+  if (billUrl) {
+      // Mise à jour du contenu de la modale pour afficher l'image de la facture
+      $('#modaleFileAdmin1')
+          .find(".modal-body")
+          .html(`<div style='text-align: center;'>
+                    <img width=${imgWidth} src=${billUrl} alt="Bill"/>
+                 </div>`);
+  } else {
+      // Si aucune URL n'est disponible, afficher un message indiquant l'absence d'image
+      $('#modaleFileAdmin1')
+          .find(".modal-body")
+          .html('<p>Aucune image disponible.</p>');
   }
+
+  // Affichage de la modale si la méthode "modal" est disponible
+  if (typeof $('#modaleFileAdmin1').modal === 'function') {
+      $('#modaleFileAdmin1').modal('show');
+  }
+};
+
   
 
   handleEditTicket(e, bill, bills) {
